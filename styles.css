@@ -1,7 +1,32 @@
 .top-pad{
-    padding-bottom: 300px;
+    padding-bottom: 200px;
 }
 
 .title-pad{
-    padding-top: 10px;
+    padding-top: 30px;
 }
+
+.carousel-item {
+    height: 700px;
+    width: 525px;
+}
+
+body {
+    background-color: white;
+}
+
+.carousel-control-next,
+.carousel-control-prev /*, .carousel-indicators */ {
+    filter: invert(100%);
+    /* width: 20%;*/
+    margin-top: 645px;
+}
+
+h5 {
+    color: black;
+}
+
+.carousel-indicators{
+    filter: invert(100%);
+}
+
