@@ -1,27 +1,11 @@
-// Global Variables
-
+// https://past-boys.surge.sh/
 
 document.addEventListener('DOMContentLoaded', mainSearch);
 
-// {
-//     "success": true,
-//     "data": {
-//         "memes": [
-//             {
-//                 "id": "61579",
-//                 "name": "One Does Not Simply",
-//                 "url": "https://i.imgflip.com/1bij.jpg",
-//                 "width": 568,
-//                 "height": 335,
-//                 "box_count": 2
-//             },
-//         ]
-//     }
-// }
 
 function mainSearch(){
-    let memeList = []
-    let resultList = []
+    let memeList = [];
+    let resultList = [];
     fetch('https://api.imgflip.com/get_memes')
     .then(response => response.json())
     .then((data) =>{memeList = data.data.memes;})
@@ -36,7 +20,7 @@ function mainSearch(){
 
 
 function capFirstLetter(words) {
-    var separateWord = words.split(' ');
+    let separateWord = words.split(' ');
     for (var i = 0; i < separateWord.length; i++) {
        separateWord[i] = separateWord[i].charAt(0).toUpperCase() + separateWord[i].substring(1);
     }
@@ -48,10 +32,10 @@ function resultCard(memeList){
     let resultEl = document.getElementById("resultCard");
     // "Meme Not Found" if array is empty
     if (memeList.length === 0){
-        clearChildElements(resultEl)
-        createNotFoundCard(resultEl)
+        clearChildElements(resultEl);
+        createNotFoundCard(resultEl);
     } else {
-        buildCarousel(resultEl, memeList)
+        buildCarousel(resultEl, memeList);
     }
 }
 
@@ -62,17 +46,17 @@ function buildCarousel(resultEl, arr){
     let carouselEl = document.createElement("div");
 
     carouselInnerEl.setAttribute("class", "carousel-inner justify-content-center");
-    carouselIndicatorsEl.setAttribute("class", "carousel-indicators")
-    carouselEl.setAttribute("class", "carousel slide col-5 fade-in")
-    carouselEl.setAttribute("id", "carouselExampleCaptions")
-    carouselEl.setAttribute("data-bs-ride", "carousel")
+    carouselIndicatorsEl.setAttribute("class", "carousel-indicators");
+    carouselEl.setAttribute("class", "carousel slide col-5 fade-in");
+    carouselEl.setAttribute("id", "carouselExampleCaptions");
+    carouselEl.setAttribute("data-bs-ride", "carousel");
 
     // Next/Previous Buttons
     let prevBtnHidden = document.createElement("span");
     let prevBtnIcon = document.createElement("span");
     let prevBtnEl = document.createElement("button");
 
-    prevBtnHidden.innerText = "Previous"
+    prevBtnHidden.innerText = "Previous";
     prevBtnHidden.setAttribute("class","visually-hidden");
     prevBtnIcon.setAttribute("class","carousel-control-prev-icon");
     prevBtnEl.setAttribute("type","button");
@@ -87,7 +71,7 @@ function buildCarousel(resultEl, arr){
     let nextBtnIcon = document.createElement("span");
     let nextBtnEl = document.createElement("button");
 
-    nextBtnHidden.innerText = "Next"
+    nextBtnHidden.innerText = "Next";
     nextBtnHidden.setAttribute("class","visually-hidden");
     nextBtnIcon.setAttribute("class","carousel-control-next-icon");
     nextBtnEl.setAttribute("type","button");
@@ -128,7 +112,7 @@ function buildCarousel(resultEl, arr){
 
 
         carouselTitleEl.innerText = arr[i].name;
-        carouselTitleEl.setAttribute("id", "cardTitleText")
+        carouselTitleEl.setAttribute("id", "cardTitleText");
 
         carouselCaptionEl.setAttribute("class", "carousel-caption d-none d-md-block");
         carouselImgEl.setAttribute("src", arr[i].url);
@@ -137,19 +121,19 @@ function buildCarousel(resultEl, arr){
         
         // Let the appending begin
         carouselCaptionEl.append(carouselTitleEl);
-        carouselCaptionEl.append(carouselDescEl)
-        carouselImgDiv.append(carouselImgEl)
-        carouselItemEl.append(carouselImgDiv)
-        carouselItemEl.append(carouselCaptionEl)
-        carouselInnerEl.append(carouselItemEl)
-        carouselIndicatorsEl.append(carouselIndicatorButtons)
+        carouselCaptionEl.append(carouselDescEl);
+        carouselImgDiv.append(carouselImgEl);
+        carouselItemEl.append(carouselImgDiv);
+        carouselItemEl.append(carouselCaptionEl);
+        carouselInnerEl.append(carouselItemEl);
+        carouselIndicatorsEl.append(carouselIndicatorButtons);
         
 
     }
-    carouselEl.append(carouselIndicatorsEl)
-    carouselEl.append(carouselInnerEl)
-    carouselEl.append(prevBtnEl)
-    carouselEl.append(nextBtnEl)
+    carouselEl.append(carouselIndicatorsEl);
+    carouselEl.append(carouselInnerEl);
+    carouselEl.append(prevBtnEl);
+    carouselEl.append(nextBtnEl);
 
 
     clearChildElements(resultEl);
@@ -163,6 +147,7 @@ function clearChildElements(parentEl){
     }
 }
 
+
 function createNotFoundCard(resultEl){
     let notFoundEl = document.createElement("h4");
     notFoundEl.setAttribute("class", "display-4 title-pad text-center");
@@ -171,17 +156,7 @@ function createNotFoundCard(resultEl){
 }
 
 
-
-// box_count: 2
-// height: 438
-// id: "188390779"
-// name: "Woman Yelling At Cat"
-// url: "https://i.imgflip.com/345v97.jpg"
-// width: 680
-
 function createMemeBtnFcn(resultEl, meme){
-
-
     // Wipe it clean
     clearChildElements(resultEl);
 
@@ -200,14 +175,14 @@ function createMemeBtnFcn(resultEl, meme){
     let genMemeBtnEl = document.createElement("button");
     let genMemeBtnRow = document.createElement("div");
     genMemeTitleEl.setAttribute("class","row justify-content-center text-center fs-4 bottom-pad");
-    genMemeTitleEl.innerText = "Enter Your Words of Wisdom"
-    genMemeBtnEl.setAttribute("class", "btn btn-outline-dark rounded-pill")
-    genMemeBtnEl.setAttribute("id", "generateMemeBtn")
-    genMemeBtnEl.innerText = "Make My Meme"
-    genMemeBtnRow.setAttribute("class","row input-group input-group-lg justify-content-center")
-    genMemeRightCol.setAttribute("class","col-4 justify-content-center fade-in")
-
+    genMemeTitleEl.innerText = "Enter Your Words of Wisdom";
+    genMemeBtnEl.setAttribute("class", "btn btn-outline-dark rounded-pill");
+    genMemeBtnEl.setAttribute("id", "generateMemeBtn");
+    genMemeBtnEl.innerText = "Make My Meme";
+    genMemeBtnRow.setAttribute("class","row input-group input-group-lg justify-content-center");
+    genMemeRightCol.setAttribute("class","col-4 justify-content-center fade-in");
     genMemeRightCol.append(genMemeTitleEl);
+
     // Right Side, Text Boxes, Meme Dependent
     for(let i=0; i < meme.box_count; i++){
         let textBoxEl = document.createElement("input");
@@ -215,7 +190,7 @@ function createMemeBtnFcn(resultEl, meme){
         textBoxEl.setAttribute("type","text");
         textBoxEl.setAttribute("class","form-control rounded-pill");
         textBoxEl.setAttribute("id","textBox_"+i);
-        textBoxRow.setAttribute("class","row input-group input-group-lg mb-3 justify-content-center")
+        textBoxRow.setAttribute("class","row input-group input-group-lg mb-3 justify-content-center");
 
         textBoxRow.append(textBoxEl);
         genMemeRightCol.append(textBoxRow);
@@ -223,8 +198,7 @@ function createMemeBtnFcn(resultEl, meme){
     genMemeBtnRow.append(genMemeBtnEl);
     genMemeRightCol.append(genMemeBtnRow);
     resultEl.append(genMemeRightCol);
-    // Appending Action
-
+    
     createNewMeme(meme, memeImgDiv);
 }
 
@@ -239,7 +213,7 @@ function createNewMeme(meme, memeImgDiv){
         formData.append("password", "toheneb279");
         for(let i=0; i<meme.box_count;i++){
             if(document.getElementById("textBox_"+i) !==null){
-                formData.append(`boxes[${i}][text]`, document.getElementById("textBox_"+i).value)
+                formData.append(`boxes[${i}][text]`, document.getElementById("textBox_"+i).value);
             }
         }
     
@@ -258,16 +232,18 @@ function createNewMeme(meme, memeImgDiv){
 
 function newMemeReturn(imgURL, memeImgDiv){
     clearChildElements(memeImgDiv);
+
     let newMemeAnchor = document.createElement("a");
     let newMemeEl = document.createElement("img");
+
     newMemeAnchor.setAttribute("href",imgURL);
     newMemeAnchor.setAttribute("target","_blank");
     newMemeAnchor.setAttribute("rel","noreferrer noopener");
     newMemeEl.setAttribute("class","img-fluid fade-in");
     newMemeEl.setAttribute("src", imgURL);
-    newMemeAnchor.append(newMemeEl)
-    memeImgDiv.append(newMemeAnchor)
-    //console.log(imgURL)
+    
+    newMemeAnchor.append(newMemeEl);
+    memeImgDiv.append(newMemeAnchor);
 }
 
 
