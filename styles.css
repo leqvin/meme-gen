@@ -3,12 +3,25 @@
 }
 
 .title-pad{
-    padding-top: 30px;
+    padding-top: 35px;
+}
+
+.bottom-pad{
+    padding-bottom: 10px;
 }
 
 .carousel-item {
     height: 700px;
     width: 525px;
+    background-color: rgb(233, 233, 233);
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.gen-meme{
+    background-color: rgb(233, 233, 233);
+    border-radius: 15px;
+    padding: 10px;
 }
 
 body {
@@ -30,3 +43,86 @@ h5 {
     filter: invert(100%);
 }
 
+.carousel-control-next:hover,
+.carousel-control-prev:hover{
+    transform: scale(1.5);
+    filter: invert(0%);
+}
+
+#cardTitleText{
+	color: white;
+	font-size: 31px;
+    font-weight: bold;
+	-webkit-text-stroke-width: 1.3px;
+    -webkit-text-stroke-color: black;
+}
+
+.img-fluid{
+    border-style: solid;
+    border: 20px;
+}
+
+#createMemeBtn{
+    color: rgb(0, 0, 0);
+	font-size: 18px;
+    font-weight: bold;
+    background-color: rgb(233, 233, 233);
+	-webkit-text-stroke-width: 0px;
+    -webkit-text-stroke-color: black;
+}
+
+#createMemeBtn:hover{
+    background-color: black;
+    color: white;
+}
+
+.fade-in{
+    animation-name: FadeIn;
+    animation-duration: 1s;
+    transition-timing-function: linear;
+  }
+  
+  @keyframes FadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @-moz-keyframes FadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @-webkit-keyframes FadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @-o-keyframes FadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @-ms-keyframes FadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
